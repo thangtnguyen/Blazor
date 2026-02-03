@@ -10,12 +10,24 @@
         <button class="btn btn-primary" @onclick="ReverseMe">Reverse Me</button>
     </div>
     <hr />
-    <div>@displayMessage</div>
+    @if (displayMessage != "")
+    {
+        @if (isPalindrome)
+        {
+            <Message DisplayMessage="@displayMessage" Title="the message IS a palindrome" CssClass="alert-success" />
+        }
+        else
+        {
+            <Message DisplayMessage="@displayMessage" Title="the message IS NOT a palindrome" CssClass="alert-danger" />
+        }
+        
+    }
 </div>
 
 @code {
     private string message = "Reverse Me";    
     private string displayMessage = "";
+    private bool isPalindrome = false;
 
     private void ReverseMe()
     {
@@ -24,6 +36,15 @@
         for (int i = message.Length - 1; i >= 0; i--)
         {
             reversedMessage += message[i];
+        }
+
+        if (reversedMessage == message)
+        {
+            isPalindrome = true;
+        }
+        else
+        {
+            isPalindrome = false;
         }
 
         displayMessage = $"The reverse of {message} is {reversedMessage}";
