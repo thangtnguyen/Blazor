@@ -6,3 +6,5 @@
 /BlazorTasker/obj
 
 .vs/
+/BlazorLayout/bin/Debug/net10.0
+/BlazorLayout/obj
